@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+  app:
+    container_name: nextjs
+    command: npm run dev
+    build:
+      context: "./"
+      dockerfile: Dockerfile.local
+    environment:
+      APP_ENV: local
+    volumes:
+      - ./:/app
+      - /app/node_modules
+      - /app/.next
+    ports:
+      - "9000:3000"
